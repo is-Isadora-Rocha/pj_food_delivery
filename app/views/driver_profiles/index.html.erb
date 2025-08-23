@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Driver profiles" %>
+
+<h1>Driver profiles</h1>
+
+<div id="driver_profiles">
+  <% @driver_profiles.each do |driver_profile| %>
+    <%= render driver_profile %>
+    <p>
+      <%= link_to "Show this driver profile", driver_profile %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New driver profile", new_driver_profile_path %>

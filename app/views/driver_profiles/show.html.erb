@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @driver_profile %>
+
+<div>
+  <%= link_to "Edit this driver profile", edit_driver_profile_path(@driver_profile) %> |
+  <%= link_to "Back to driver profiles", driver_profiles_path %>
+
+  <%= button_to "Destroy this driver profile", @driver_profile, method: :delete %>
+</div>

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing delivery fee rule" %>
+
+<h1>Editing delivery fee rule</h1>
+
+<%= render "form", delivery_fee_rule: @delivery_fee_rule %>
+
+<br>
+
+<div>
+  <%= link_to "Show this delivery fee rule", @delivery_fee_rule %> |
+  <%= link_to "Back to delivery fee rules", delivery_fee_rules_path %>
+</div>

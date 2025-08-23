@@ -1,0 +1,11 @@
+<% content_for :title, "New driver profile" %>
+
+<h1>New driver profile</h1>
+
+<%= render "form", driver_profile: @driver_profile %>
+
+<br>
+
+<div>
+  <%= link_to "Back to driver profiles", driver_profiles_path %>
+</div>

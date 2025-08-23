@@ -1,0 +1,47 @@
+<%= form_with(model: payment_intent) do |form| %>
+  <% if payment_intent.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(payment_intent.errors.count, "error") %> prohibited this payment_intent from being saved:</h2>
+
+      <ul>
+        <% payment_intent.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :order_id, style: "display: block" %>
+    <%= form.text_field :order_id %>
+  </div>
+
+  <div>
+    <%= form.label :provider, style: "display: block" %>
+    <%= form.text_field :provider %>
+  </div>
+
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div>
+    <%= form.label :external_id, style: "display: block" %>
+    <%= form.text_field :external_id %>
+  </div>
+
+  <div>
+    <%= form.label :payload, style: "display: block" %>
+    <%= form.text_field :payload %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

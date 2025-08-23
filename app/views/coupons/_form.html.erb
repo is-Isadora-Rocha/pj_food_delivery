@@ -1,0 +1,57 @@
+<%= form_with(model: coupon) do |form| %>
+  <% if coupon.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
+
+      <ul>
+        <% coupon.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.label :discount_type, style: "display: block" %>
+    <%= form.number_field :discount_type %>
+  </div>
+
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :min_order_value, style: "display: block" %>
+    <%= form.text_field :min_order_value %>
+  </div>
+
+  <div>
+    <%= form.label :restaurant_id, style: "display: block" %>
+    <%= form.text_field :restaurant_id %>
+  </div>
+
+  <div>
+    <%= form.label :expires_at, style: "display: block" %>
+    <%= form.datetime_field :expires_at %>
+  </div>
+
+  <div>
+    <%= form.label :active, style: "display: block" %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div>
+    <%= form.label :usage_limit, style: "display: block" %>
+    <%= form.number_field :usage_limit %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

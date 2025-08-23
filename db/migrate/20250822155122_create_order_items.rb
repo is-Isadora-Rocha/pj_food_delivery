@@ -10,5 +10,8 @@ class CreateOrderItems < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
+
+    add_foreign_key :orders, :users, column: :courier_id
+    add_index :orders, :courier_id
   end
 end
