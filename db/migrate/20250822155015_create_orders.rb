@@ -14,7 +14,9 @@ class CreateOrders < ActiveRecord::Migration[7.2]
       t.integer :distance_meters
       t.integer :eta_minutes
       t.text :route_geometry
-      t.references :coupon, null: false, foreign_key: true
+      #t.references :coupon, null: false, foreign_key: true
+      t.references :coupon
+
 
       t.timestamps
     end
