@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  resources :notifications
+  resources :reviews
+  resources :driver_profiles
+  resources :payment_intents
+  resources :coupons
+  resources :delivery_fee_rules
+  resources :order_items
+  resources :orders
+  resources :cart_items
+  resources :carts
+  resources :menu_items
+  resources :categories
+  resources :restaurants
   resources :addresses
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

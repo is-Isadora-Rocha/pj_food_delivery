@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Delivery fee rules" %>
+
+<h1>Delivery fee rules</h1>
+
+<div id="delivery_fee_rules">
+  <% @delivery_fee_rules.each do |delivery_fee_rule| %>
+    <%= render delivery_fee_rule %>
+    <p>
+      <%= link_to "Show this delivery fee rule", delivery_fee_rule %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New delivery fee rule", new_delivery_fee_rule_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @payment_intent %>
+
+<div>
+  <%= link_to "Edit this payment intent", edit_payment_intent_path(@payment_intent) %> |
+  <%= link_to "Back to payment intents", payment_intents_path %>
+
+  <%= button_to "Destroy this payment intent", @payment_intent, method: :delete %>
+</div>

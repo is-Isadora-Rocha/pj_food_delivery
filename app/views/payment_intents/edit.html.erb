@@ -1,0 +1,12 @@
+<% content_for :title, "Editing payment intent" %>
+
+<h1>Editing payment intent</h1>
+
+<%= render "form", payment_intent: @payment_intent %>
+
+<br>
+
+<div>
+  <%= link_to "Show this payment intent", @payment_intent %> |
+  <%= link_to "Back to payment intents", payment_intents_path %>
+</div>

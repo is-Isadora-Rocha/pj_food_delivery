@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Payment intents" %>
+
+<h1>Payment intents</h1>
+
+<div id="payment_intents">
+  <% @payment_intents.each do |payment_intent| %>
+    <%= render payment_intent %>
+    <p>
+      <%= link_to "Show this payment intent", payment_intent %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New payment intent", new_payment_intent_path %>
