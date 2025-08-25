@@ -8,9 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-#owner = User.create!(email: 'owner@example.com', password: '123456', role: :owner)
-#customer = User.create!(email: 'customer@example.com', password: '123456', role: :customer)
 
+# USERS
 owner = User.find_or_create_by!(email: 'owner@example.com') do |user|
   user.password = '123456'
   user.role = :owner
@@ -21,21 +20,54 @@ customer = User.find_or_create_by!(email: 'customer@example.com') do |user|
   user.role = :customer
 end
 
-rest = Restaurant.create!(user: owner, name: 'Pizzaria da Isa', description: 'A melhor!',
-                          phone: '11999999999', active: true,
-                          opening_time: '18:00', closing_time: '23:59', min_order_value: 20)
+# RESTAURANT
+rest = Restaurant.find_or_create_by!(user: owner, name: 'Pizzaria da Isa') do |r|
+  r.description = 'A melhor!'
+  r.phone = '11999999999'
+  r.active = true
+  r.opening_time = '18:00'
+  r.closing_time = '23:59'
+  r.min_order_value = 20
+end
 
-Category.create!(restaurant: rest, name: 'Pizzas', position: 1)
-Category.create!(restaurant: rest, name: 'Bebidas', position: 2)
+# CATEGORIES
+pizzas = Category.find_or_create_by!(restaurant: rest, name: 'Pizzas') do |c|
+  c.position = 1
+end
 
-m1 = MenuItem.create!(restaurant: rest, category: rest.categories.first, name: 'Mussarela',
-                      description: 'Clássica', price: 39.9, available: true)
-m2 = MenuItem.create!(restaurant: rest, category: rest.categories.first, name: 'Calabresa',
-                      description: 'Top', price: 44.9, available: true)
+bebidas = Category.find_or_create_by!(restaurant: rest, name: 'Bebidas') do |c|
+  c.position = 2
+end
 
-addr = Address.create!(addressable: customer, cep: '01001-000', street: 'Praça da Sé',
-                       number: '100', neighborhood: 'Sé', city: 'São Paulo', state: 'SP')
+# MENU ITEMS
+m1 = MenuItem.find_or_create_by!(restaurant: rest, category: pizzas, name: 'Mussarela') do |mi|
+  mi.description = 'Clássica'
+  mi.price = 39.9
+  mi.available = true
+end
 
-cart = Cart.create!(user: customer, restaurant: rest, status: :active)
-CartItem.create!(cart: cart, menu_item: m1, quantity: 1, unit_price: m1.price)
-CartItem.create!(cart: cart, menu_item: m2, quantity: 2, unit_price: m2.price)
+m2 = MenuItem.find_or_create_by!(restaurant: rest, category: pizzas, name: 'Calabresa') do |mi|
+  mi.description = 'Top'
+  mi.price = 44.9
+  mi.available = true
+end
+
+# ADDRESS
+addr = Address.find_or_create_by!(addressable: customer, cep: '01001-000', street: 'Praça da Sé', number: '100') do |a|
+  a.neighborhood = 'Sé'
+  a.city = 'São Paulo'
+  a.state = 'SP'
+end
+
+# CART & CART ITEMS
+cart = Cart.find_or_create_by!(user: customer, restaurant: rest, status: :active)
+
+CartItem.find_or_create_by!(cart: cart, menu_item: m1) do |ci|
+  ci.quantity = 1
+  ci.unit_price = m1.price
+end
+
+CartItem.find_or_create_by!(cart: cart, menu_item: m2) do |ci|
+  ci.quantity = 2
+  ci.unit_price = m2.price
+end
