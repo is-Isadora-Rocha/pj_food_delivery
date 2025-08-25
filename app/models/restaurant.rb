@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
-  has_many :categories, dependent: :destroy
-  has_many :menu_items, through: :categories
+  has_many :menu_items, :categories, :orders, :delivery_fee_rules, dependent: :destroy
+  has_one :address, as: :addressable, dependent: :destroy
 end
